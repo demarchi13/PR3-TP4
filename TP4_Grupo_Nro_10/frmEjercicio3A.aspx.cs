@@ -10,6 +10,7 @@ namespace TP4_Grupo_Nro_10
 {
     public partial class frmEjercicio3A : System.Web.UI.Page
     {
+        //PUNTO 3
         private void cargarTemas()
         {
             string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Libreria;Integrated Security=True";
@@ -30,19 +31,21 @@ namespace TP4_Grupo_Nro_10
 
             cn.Close();
         }
+        //PUNTO 4
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 cargarTemas();
-
             }
         }
 
         protected void lnkLibros_Click(object sender, EventArgs e)
         {
+            //PUNTO 5
             string valorTema = ddlTemas.SelectedValue;
-
+            
+            //PUNTO 6
             Response.Redirect("frmEjercicio3B.aspx?Valor=" + valorTema);
         }
 
