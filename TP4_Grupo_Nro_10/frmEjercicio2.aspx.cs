@@ -10,6 +10,7 @@ namespace TP4_Grupo_Nro_10
 {
     public partial class frmEjercicio2 : System.Web.UI.Page
     {
+        //PUNTO 2
         private void CargarGrilla()
         {
             string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
@@ -27,6 +28,7 @@ namespace TP4_Grupo_Nro_10
 
             cn.Close();
         }
+        //PUNTO 3
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -42,6 +44,7 @@ namespace TP4_Grupo_Nro_10
                 ddlCategoria.Items.Add(new ListItem("Menor a: ", "3"));
             }
         }
+        //PUNTO 4
         private void filtrarProductoIgual(int valor)
         {
             string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
@@ -53,7 +56,7 @@ namespace TP4_Grupo_Nro_10
             gvProductos.DataBind();
             cn.Close();
         }
-
+        //PUNTO 4
         private void filtrarProductoMayor(int valor)
         {
             string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
@@ -65,7 +68,7 @@ namespace TP4_Grupo_Nro_10
             gvProductos.DataBind();
             cn.Close();
         }
-
+        //PUNTO 5
         private void filtrarProductoMenor(int valor)
         {
             string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
@@ -77,7 +80,7 @@ namespace TP4_Grupo_Nro_10
             gvProductos.DataBind();
             cn.Close();
         }
-
+        //PUNTO 5
         private void filtrarCategoriaIgual(int valor)
         {
             string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
@@ -89,6 +92,7 @@ namespace TP4_Grupo_Nro_10
             gvProductos.DataBind();
             cn.Close();
         }
+        //PUNTO 6
         private void filtrarCategoriaMayor(int valor)
         {
             string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
@@ -100,6 +104,7 @@ namespace TP4_Grupo_Nro_10
             gvProductos.DataBind();
             cn.Close();
         }
+        //PUNTO 6
         private void filtrarCategoriaMenor(int valor)
         {
             string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
@@ -111,7 +116,7 @@ namespace TP4_Grupo_Nro_10
             gvProductos.DataBind();
             cn.Close();
         }
-
+        //PUNTO 7
         private void filtrarProductoCategoria(int idProducto, int idCategoria)
         {
             int valorDDLProducto = Convert.ToInt32(ddlProducto.SelectedValue);
@@ -159,9 +164,9 @@ namespace TP4_Grupo_Nro_10
             cn.Close();
         }
 
-
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+            //PUNTO 8
             if (txtProducto.Text != "")
             {
                 //string producto = txtProducto.Text.Trim();
@@ -182,6 +187,7 @@ namespace TP4_Grupo_Nro_10
                         break;
                 }
             }
+            //PUNTO 9
             else if (txtCategoria.Text != "")
             {
                 int idCategoria = Convert.ToInt32(txtCategoria.Text); //Guarda el id
@@ -201,6 +207,7 @@ namespace TP4_Grupo_Nro_10
                         break;
                 }
             }
+            //PUNTO 10
             else if (txtProducto.Text != "" && txtCategoria.Text != "")
             {
                 int idProducto = Convert.ToInt32(txtProducto.Text); //Guarda el id
@@ -208,6 +215,7 @@ namespace TP4_Grupo_Nro_10
 
                 filtrarProductoCategoria(idProducto, idCategoria);
             }
+            //PUNTO 11
             else
             {
                 CargarGrilla();
@@ -215,7 +223,7 @@ namespace TP4_Grupo_Nro_10
             txtCategoria.Text = "";
             txtProducto.Text = "";
         }
-
+        //PUNTO 12
         protected void btnQuitarFiltro_Click(object sender, EventArgs e)
         {
             CargarGrilla();
