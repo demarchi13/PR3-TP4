@@ -8,10 +8,10 @@ using System.Data.SqlClient;
 
 
 namespace TP4_Grupo_Nro_10
-{
+{ 
     public partial class frmEjercicio1 : System.Web.UI.Page
     {
-
+        //PUNTO 2
         private void CargarProvincias(DropDownList ddlProvincia)
         {
             SqlConnection conexion = new SqlConnection();
@@ -33,6 +33,8 @@ namespace TP4_Grupo_Nro_10
 
             conexion.Close();
         }
+        
+        //PUNTO 6
         private void CargarProvincias2(DropDownList ddlProvincia, int indiceDDL)
         {
             SqlConnection conexion = new SqlConnection();
@@ -55,6 +57,7 @@ namespace TP4_Grupo_Nro_10
             conexion.Close();
         }
 
+        //PUNTO 5
         private void CargarLocalidadesInicio(DropDownList ddlLocalidades)
         {
             int idProvincia = Convert.ToInt32(ddlProvinciaInicio.SelectedValue);
@@ -79,6 +82,7 @@ namespace TP4_Grupo_Nro_10
             conexion.Close();
         }
 
+        //PUNTO 7
         private void CargarLocalidadesFinal(DropDownList ddlLocalidades, int valorIndice)
         {
             SqlConnection conexion = new SqlConnection();
@@ -100,14 +104,15 @@ namespace TP4_Grupo_Nro_10
 
             conexion.Close();
         }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
             {
-                //cargar provincias
+                //PUNTO 3 cargar provincias
                 CargarProvincias(ddlProvinciaInicio);
 
-                //Carga el valor inicial de los ddl
+                //PUNTO 4 Carga el valor inicial de los ddl
                 ddlProvinciaInicio.Items.Insert(0, new ListItem("--Seleccionar--", "0"));
                 ddlLocalidadInicio.Items.Insert(0, new ListItem("--Seleccionar--", "0"));
                 ddlProvinciaFinal.Items.Insert(0, new ListItem("--Seleccionar--", "0"));
@@ -120,6 +125,7 @@ namespace TP4_Grupo_Nro_10
         {
             try
             {
+                //PUNTO 8
                 //Carga las localidades segun la provincia seleccionada
                 CargarLocalidadesInicio(ddlLocalidadInicio);
                 ddlLocalidadInicio.Items.Insert(0, new ListItem("--Seleccionar--", "0"));
@@ -129,6 +135,7 @@ namespace TP4_Grupo_Nro_10
                 CargarProvincias2(ddlProvinciaFinal, indiceInicio);
                 ddlProvinciaFinal.Items.Insert(0, new ListItem("--Seleccionar--", "0"));
 
+                //PUNTO9
                 //Limpia ddlFinalLocalidades si no hay ninguna provincia final seleccionada
                 int auxInicio = Convert.ToInt32(ddlProvinciaFinal.SelectedValue);
                 int auxFinal = Convert.ToInt32(ddlLocalidadInicio.SelectedValue);
@@ -143,7 +150,8 @@ namespace TP4_Grupo_Nro_10
         }
 
         protected void ddlProvinciaFinal_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {    
+            //PUNTO 10
             //Carga las localidades segun la provincia destino final seleccionada
             int indiceFinal = Convert.ToInt32(ddlProvinciaFinal.SelectedValue);
             CargarLocalidadesFinal(ddlLocalidadFinal, indiceFinal);
